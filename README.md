@@ -11,12 +11,12 @@
     ./configure --with-php-config=/usr/local/php/bin/php-config
     make && make install 
  <h3>3、字典路径</h3>   
- WORDSFILTER_TEXT_PATH 字典绝对路径例如：/var/www/html/dict.txt
- WORDSFILTER_BINARY_PATH 生成树文件 例如：/var/www/html/dict.tree
-<h3>3、下面php的伪代码</h3>
-        /**
-         * 创建敏感词字典树
-	 */
+ <p>WORDSFILTER_TEXT_PATH 字典绝对路径例如：/var/www/html/dict.txt</P>
+ <p>WORDSFILTER_BINARY_PATH 生成树文件 例如：/var/www/html/dict.tree</p>
+<h3>4、下面php的伪代码</h3>
+	/**
+	* 创建敏感词字典树
+	*/	
 	public function create_tree()
 	{
 		$fp = fopen(WORDSFILTER_TEXT_PATH, "r");
@@ -42,7 +42,7 @@
 		fclose($fp);
         }
 	
-	/*
+	/**
 	 * 过滤敏感词
 	 */
 	public function filter_content($content, $replace = '**')
