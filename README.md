@@ -1,20 +1,21 @@
 # php-ext-trie-filter-sensitive-words
 使用php的trie_filter扩展，加词库过滤敏感词，trie_filter扩展是基于Double-Array Trie 树实现。具体算法可以百度。<br />
-1、编译安装libdatrie<br />
-tar -zvxf libdatrie-0.2.4.tar.gz<br />
-cd libdatrie-0.2.4<br />
-./configure && make && make install <br />
-2、下载php-ext-trie-filter(https://github.com/wulijun/php-ext-trie-filter)<br />
-unzip php-ext-trie-filter-master.zip<br />
-cd php-ext-trie-filter-master<br />
-/usr/local/php/bin/phpize<br />
-./configure --with-php-config=/usr/local/php/bin/php-config<br />
-make && make install <br />
-3、下面php的伪代码<br />
-(1) WORDSFILTER_TEXT_PATH 字典绝对路径例如：/var/www/html/dict.txt<br />
-(2) WORDSFILTER_BINARY_PATH 生成树文件 例如：/var/www/html/dict.tree<br />
-/**<br />
-	 * 创建敏感词字典树<br />
+<h3>1、编译安装libdatrie</h3>
+    tar -zvxf libdatrie-0.2.4.tar.gz<br />
+    cd libdatrie-0.2.4<br />
+    ./configure && make && make install <br />
+<h3>2、下载php-ext-trie-filter(https://github.com/wulijun/php-ext-trie-filter)</h3>
+    unzip php-ext-trie-filter-master.zip<br />
+    cd php-ext-trie-filter-master<br />
+    /usr/local/php/bin/phpize<br />
+    ./configure --with-php-config=/usr/local/php/bin/php-config<br />
+    make && make install <br />
+ <h3>3、字典路径</h3>   
+ WORDSFILTER_TEXT_PATH 字典绝对路径例如：/var/www/html/dict.txt<br />
+ WORDSFILTER_BINARY_PATH 生成树文件 例如：/var/www/html/dict.tree<br />
+<h3>3、下面php的伪代码</h3>
+        /*<br />
+         * 创建敏感词字典树<br />
 	 */<br />
 	public function create_tree()<br />
 	{<br />
@@ -39,8 +40,9 @@ make && make install <br />
 		trie_filter_save($res_trie, WORDSFILTER_BINARY_PATH);<br />
 		unset($res_trie);<br />
 		fclose($fp);<br />
-}<br />
-/**<br />
+        }<br />
+	
+	/*<br />
 	 * 过滤敏感词<br />
 	 */<br />
 	public function filter_content($content, $replace = '**')<br />
