@@ -1,4 +1,5 @@
-# php-ext-trie-filter-sensitive-words
+php-ext-trie-filter-sensitive-words
+========
 使用php的trie_filter扩展，加词库过滤敏感词，trie_filter扩展是基于Double-Array Trie 树实现。具体算法可以百度。<br />
 <h3>1、编译安装libdatrie</h3>
     tar -zvxf libdatrie-0.2.4.tar.gz
